@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop Info</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #f5891d, #000000);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+      .container {
+        background-color: #fff;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        max-width: 340px;
+        width: 90%;
+        text-align: center;
+        animation: slideUp 1s ease-in-out;
+        position: relative;
+        z-index: 10;
+      }
+
+      /* Smooth sliding animation */
+      @keyframes slideUp {
+        from {
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      /* Slide-in animation for icons */
+      @keyframes slideInRight {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      /* Burger-Fries Icon */
+      .burger-img {
+        animation: slideInLeft 1.5s ease-out forwards;
+      }
+
+      .logo {
+        border-radius: 10px;
+        margin-bottom: 30px;
+      }
+
+      .shop-info {
+        margin-bottom: 20px;
+        text-align: left;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 1.6;
+      }
+
+      .shop-info p {
+        margin: 10px 0;
+        color: #333;
+        display: flex;
+        align-items: center;
+        word-wrap: break-word;
+        word-break: break-word;
+      }
+
+      .shop-info i {
+        color: #f5891d;
+        margin-right: 10px;
+        font-size: 18px;
+      }
+
+      .button {
+        display: inline-block;
+        padding: 12px 25px;
+        background-color: #f5891d;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 50px;
+        margin-top: 5px;
+        font-weight: bold;
+        font-size: 16px;
+        animation: pulse 1.5s infinite ease-in-out;
+      }
+
+      .shop-info a {
+        color: #f5891d;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      .shop-info a:hover {
+        color: #000000;
+        text-decoration: underline;
+      }
+
+      /* Pulse animation for the button */
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .button:hover {
+        background-color: #000000;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 480px) {
+        .bg-absolute img {
+          width: 200px;
+        }
+        .container {
+          padding: 15px;
+        }
+
+        .shop-info p {
+          font-size: 14px;
+        }
+
+        .button {
+          padding: 10px 20px;
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <img alt="logo" src="./logo.png" width="230" />
+      </div>
+      <div class="shop-info">
+        <p>
+          <i class="fas fa-map-marker-alt"></i>
+          Hacıahmet, The kiosk, <br />
+          Benesta Residance, Kurtuluş Deresi Cd. No:17,<br />
+          34000 Beyoğlu/İstanbul, Türkiye
+        </p>
+        <p style="margin: 15px 0px">
+          <i class="fas fa-phone"></i> 0501 000 60 01
+        </p>
+        <p>
+          <i class="fab fa-instagram"></i
+          ><a
+            href="https://www.instagram.com/thekiosk_ist?igsh=M3phNXFpZXAyMDZp"
+            >Instagram</a
+          >
+        </p>
+      </div>
+      <a href="https://thekioskistcom.dijital.menu/" class="button"
+        >Visit Our Menu</a
+      >
+    </div>
+
+    <div
+      style="position: absolute; top: 0; left: 0"
+      class="bg-absolute burger-img"
+    >
+      <img src="./burger.png" width="250" alt="burger" />
+    </div>
+  </body>
+</html>
