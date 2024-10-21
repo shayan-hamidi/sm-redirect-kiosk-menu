@@ -3,21 +3,99 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shop Info</title>
+    <title>Kiosk Info</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+    <link rel="icon" href="./burger.png" />
     <style>
+      * {
+        scroll-behavior: smooth;
+      }
       body {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-family: "Poppins", sans-serif;
-        background: linear-gradient(135deg, #f5891d, #000000);
+        background: #eecbae;
+        color: #333;
+      }
+
+      /* Navigation menu */
+      nav {
+        background-color: #fff;
+        padding: 10px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #ccc;
+        box-shadow: 1px 1px 5px rgb(70, 70, 70);
+      }
+
+      .logo a {
+        color: #d9791d;
+        font-size: 24px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      nav .menu {
+        display: flex;
+      }
+
+      nav a {
+        color: #333;
+        text-decoration: none;
+        margin: 0 10px;
+        padding: 8px 12px;
+        transition: background 0.3s, color 0.3s;
+      }
+
+      nav a:hover {
+        background-color: #d9791d;
         color: #fff;
-        /* overflow-x: hidden; */
-        scroll-behavior: smooth;
+        border-radius: 5px;
+      }
+
+      .toggle-button {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        nav .menu {
+          display: none;
+          flex-direction: column;
+          align-items: center;
+          background-color: #fff;
+          position: absolute;
+          top: 50px;
+          left: 10px;
+          right: 10px;
+          z-index: 999;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .menu.active {
+          display: flex;
+        }
+
+        .toggle-button {
+          display: block;
+          color: #d9791d;
+        }
+
+        nav a {
+          padding: 10px;
+          width: 100%;
+          text-align: center;
+          border-top: 1px solid #ccc;
+        }
       }
 
       .container {
@@ -53,7 +131,7 @@
       .button {
         display: inline-block;
         padding: 15px 40px;
-        background-color: #ff8f1d;
+        background-color: #d9791d;
         color: #fff;
         text-decoration: none;
         border-radius: 50px;
@@ -99,7 +177,7 @@
       .text-section {
         margin: 0 auto;
         padding: 30px;
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(255, 255, 255, 0.4);
         border-radius: 15px;
         animation: fadeInUp 1.5s ease-in-out;
         text-align: left;
@@ -115,7 +193,7 @@
         content: "";
         width: 9rem;
         height: 3px;
-        background-color: #f5891d;
+        background-color: #d9791d;
         position: absolute;
         left: 0;
         bottom: -10px;
@@ -127,28 +205,36 @@
         margin-bottom: 20px;
       }
 
+      @media (min-width: 1200px) {
+        .text-section {
+          margin: 40px 100px;
+        }
+      }
+
       /* Contact Us Section */
       .contact-section {
         padding: 60px 20px;
-        background-color: #000000;
-        color: #fff;
+        background-color: #fff;
+        color: #333;
         animation: fadeInUp 2s ease-in-out;
-        border-radius: 15px;
+        border-radius: 15px 15px 0px 0px;
         margin-top: 40px;
         position: relative;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       }
 
       .contact-section h2 {
         font-size: 32px;
         margin-bottom: 30px;
         position: relative;
+        color: #d9791d;
       }
 
       .contact-section h2::after {
         content: "";
         width: 13rem;
         height: 3px;
-        background-color: #f5891d;
+        background-color: #d9791d;
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
@@ -166,7 +252,7 @@
         flex: 1 1 30%;
         margin: 15px;
         text-align: left;
-        background-color: #1a1a1a;
+        background-color: #f8f8f8;
         padding: 20px;
         border-radius: 10px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -174,12 +260,12 @@
 
       .contact-item:hover {
         transform: translateY(-10px);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       }
 
       .contact-item i {
         font-size: 24px;
-        color: #f5891d;
+        color: #d9791d;
         margin-right: 10px;
       }
 
@@ -189,14 +275,14 @@
       }
 
       .contact-item a {
-        color: #f5891d;
+        color: #d9791d;
         text-decoration: none;
         font-weight: bold;
         transition: color 0.3s ease;
       }
 
       .contact-item a:hover {
-        color: #fff;
+        color: #333;
       }
 
       /* Animations */
@@ -219,30 +305,22 @@
           opacity: 1;
         }
       }
-
-      /* Responsive */
-      @media (max-width: 768px) {
-        .photos img:hover {
-          transform: scale(1.05);
-        }
-        .text-section {
-          margin: 40px 20px;
-        }
-        .contact-item {
-          flex: 1 1 100%;
-        }
-
-        header h1 {
-          font-size: 28px;
-        }
-
-        header img {
-          width: 200px;
-        }
-      }
     </style>
   </head>
   <body>
+    <!-- Navigation Menu -->
+    <nav>
+      <div class="logo"><a href="#">The Kiosk</a></div>
+      <div class="toggle-button" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="menu">
+        <a href="#photos">Photos</a>
+        <a href="#story">Our Story</a>
+        <a href="#contact">Contact Us</a>
+      </div>
+    </nav>
+
     <header>
       <img src="./logo.png" alt="Shop Logo" />
       <h1>Welcome to The Kiosk</h1>
@@ -253,7 +331,7 @@
     </header>
 
     <!-- Photos Section -->
-    <section class="photos container">
+    <section id="photos" class="photos container">
       <img src="shop1.jpeg" alt="Shop Image 1" />
       <img src="shop2.jpeg" alt="Shop Image 2" />
       <img src="shop3.jpeg" alt="Shop Image 3" />
@@ -263,7 +341,7 @@
     </section>
 
     <!-- Text Section -->
-    <section class="text-section container">
+    <section id="story" class="text-section container">
       <h2>Our Story</h2>
       <p>
         Nestled in the heart of Istanbul, we offer a cozy spot for you to enjoy
@@ -280,7 +358,7 @@
     </section>
 
     <!-- Contact Us Section -->
-    <section class="contact-section container">
+    <section id="contact" class="contact-section container">
       <h2>Contact Us</h2>
       <div class="contact-info">
         <div class="contact-item">
@@ -306,5 +384,11 @@
         </div>
       </div>
     </section>
+
+    <script>
+      function toggleMenu() {
+        document.querySelector(".menu").classList.toggle("active");
+      }
+    </script>
   </body>
 </html>
