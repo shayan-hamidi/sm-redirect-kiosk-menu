@@ -207,7 +207,7 @@ p {
 
 @media (min-width: 1200px) {
   .text-section {
-    margin: 40px 100px;
+    max-width: 1200px;
   }
 }
 
