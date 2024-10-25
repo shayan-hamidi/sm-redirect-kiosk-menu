@@ -3,6 +3,7 @@
   scroll-behavior: smooth;
 }
 body {
+  transition: direction 0.3s ease, text-align 0.3s ease, font-family 0.3s ease;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -184,7 +185,20 @@ p {
   left: 0;
   bottom: -10px;
 }
+.rtl-heading::after {
+  left: auto;
+  right: 0; /* Align to the right for Arabic */
+  width: 5rem !important;
+}
+.rtl-contact .contact-item {
+  text-align: right;
+  direction: rtl;
+}
 
+.rtl-contact .contact-item i {
+  margin-right: 0;
+  margin-left: 10px;
+}
 .text-section p {
   font-size: 18px;
   line-height: 1.6;

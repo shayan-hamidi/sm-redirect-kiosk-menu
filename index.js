@@ -71,14 +71,26 @@ const translations = {
 function setLanguage(language) {
   localStorage.setItem("selectedLanguage", language);
   updateContent(language);
+  const storySection = document.querySelector(".text-section");
+  const storyHeading = document.querySelector(".text-section h2");
+  const contactSection = document.querySelector(".contact-section");
+
   if (language === "ar") {
     document.body.style.direction = "rtl";
     document.body.style.textAlign = "right";
     document.body.style.fontFamily = "'Amiri', serif";
+    storySection.style.direction = "rtl";
+    storySection.style.textAlign = "right";
+    storyHeading.classList.add("rtl-heading");
+    contactSection.classList.add("rtl-contact");
   } else {
     document.body.style.direction = "ltr";
     document.body.style.textAlign = "left";
     document.body.style.fontFamily = "'Poppins', sans-serif";
+    storySection.style.direction = "ltr";
+    storySection.style.textAlign = "left";
+    storyHeading.classList.remove("rtl-heading");
+    contactSection.classList.remove("rtl-contact");
   }
 }
 function updateContent(language) {
