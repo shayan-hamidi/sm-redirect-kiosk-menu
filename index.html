@@ -9,330 +9,60 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <link rel="icon" href="./burger.png" />
-    <style>
-      * {
-        scroll-behavior: smooth;
-      }
-      body {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-        background: #eecbae;
-        color: #333;
-      }
-
-      /* Navigation menu */
-      nav {
-        background-color: #fff;
-        padding: 10px 20px;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid #ccc;
-        box-shadow: 1px 1px 5px rgb(70, 70, 70);
-      }
-
-      .logo a {
-        color: #d9791d;
-        font-size: 24px;
-        text-decoration: none;
-        font-weight: bold;
-      }
-
-      nav .menu {
-        display: flex;
-      }
-
-      nav a {
-        color: #333;
-        text-decoration: none;
-        margin: 0 10px;
-        padding: 8px 12px;
-        transition: background 0.3s, color 0.3s;
-      }
-
-      nav a:hover {
-        background-color: #d9791d;
-        color: #fff;
-        border-radius: 5px;
-      }
-
-      .toggle-button {
-        display: none;
-        font-size: 24px;
-        cursor: pointer;
-      }
-
-      @media (max-width: 768px) {
-        nav .menu {
-          display: none;
-          flex-direction: column;
-          align-items: center;
-          background-color: #fff;
-          position: absolute;
-          top: 50px;
-          left: 10px;
-          right: 10px;
-          z-index: 999;
-          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        nav .menu.active {
-          display: flex;
-        }
-
-        .toggle-button {
-          display: block;
-          color: #d9791d;
-        }
-
-        nav a {
-          padding: 10px;
-          width: 100%;
-          text-align: center;
-          border-top: 1px solid #ccc;
-        }
-      }
-
-      .container {
-        width: 100%;
-        max-width: fit-content;
-        margin: 0 auto;
-        padding: 20px;
-        text-align: center;
-      }
-
-      /* Header section */
-      header {
-        padding: 40px 20px;
-        text-align: center;
-        animation: fadeIn 1.5s ease-in-out;
-      }
-
-      header img {
-        width: 250px;
-        margin-bottom: 20px;
-      }
-
-      h1 {
-        font-size: 36px;
-        margin-bottom: 10px;
-      }
-
-      p {
-        font-size: 16px;
-      }
-
-      /* Button */
-      .button {
-        display: inline-block;
-        padding: 15px 80px;
-        background-color: #d9791d;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 50px;
-        margin-top: 20px;
-        font-size: 22px;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        border: 2px solid #fff;
-        font-weight: bold;
-      }
-
-      .button:hover {
-        background-color: #000000;
-        transform: translateY(-3px);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-      }
-
-      /* Photos Section */
-      .photos {
-        margin: 40px 0;
-        text-align: center;
-        animation: fadeIn 2s ease-in-out;
-      }
-
-      .photos img {
-        width: 100%;
-        max-width: 90%;
-        margin-bottom: 20px;
-        border-radius: 15px;
-        transition: transform 0.3s ease;
-      }
-
-      .photos img:hover {
-        transform: scale(1.1);
-      }
-
-      @media (min-width: 1200px) {
-        .photos img {
-          max-width: 70%;
-        }
-      }
-
-      /* Text Section */
-      .text-section {
-        margin: 0 auto;
-        padding: 30px;
-        background-color: rgba(255, 255, 255, 0.4);
-        border-radius: 15px;
-        animation: fadeInUp 1.5s ease-in-out;
-        text-align: left;
-      }
-
-      .text-section h2 {
-        font-size: 28px;
-        margin-bottom: 20px;
-        position: relative;
-      }
-
-      .text-section h2::after {
-        content: "";
-        width: 9rem;
-        height: 3px;
-        background-color: #d9791d;
-        position: absolute;
-        left: 0;
-        bottom: -10px;
-      }
-
-      .text-section p {
-        font-size: 18px;
-        line-height: 1.6;
-        margin-bottom: 20px;
-      }
-
-      @media (min-width: 1200px) {
-        .text-section {
-          margin: 40px 100px;
-        }
-      }
-
-      /* Contact Us Section */
-      .contact-section {
-        padding: 60px 20px;
-        background-color: #fff;
-        color: #333;
-        animation: fadeInUp 2s ease-in-out;
-        border-radius: 15px 15px 0px 0px;
-        margin-top: 40px;
-        position: relative;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      }
-
-      .contact-section h2 {
-        font-size: 32px;
-        margin-bottom: 30px;
-        position: relative;
-        color: #d9791d;
-      }
-
-      .contact-section h2::after {
-        content: "";
-        width: 13rem;
-        height: 3px;
-        background-color: #d9791d;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: -10px;
-      }
-
-      .contact-info {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        margin-top: 20px;
-      }
-
-      .contact-item {
-        flex: 1 1 30%;
-        margin: 15px;
-        text-align: left;
-        background-color: #f8f8f8;
-        padding: 20px;
-        border-radius: 10px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .contact-item:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      .contact-item i {
-        font-size: 24px;
-        color: #d9791d;
-        margin-right: 10px;
-      }
-
-      .contact-item p {
-        font-size: 18px;
-        margin: 10px 0;
-      }
-
-      .contact-item a {
-        color: #d9791d;
-        text-decoration: none;
-        font-weight: bold;
-        transition: color 0.3s ease;
-      }
-
-      .contact-item a:hover {
-        color: #333;
-      }
-
-      /* New CSS for phone number */
-      .phone-number {
-        white-space: nowrap;
-      }
-
-      /* Animations */
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
-      @keyframes fadeInUp {
-        from {
-          transform: translateY(30px);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
     <!-- Navigation Menu -->
     <nav>
-      <div class="logo"><a href="#">The Kiosk</a></div>
+      <div style="display: flex; align-items: center; gap: 5">
+        <div class="language-dropdown">
+          <button class="language-icon" onclick="toggleDropdown()">
+            <i class="fas fa-globe"></i>
+          </button>
+          <div class="dropdown-content" id="languageDropdown">
+            <a onclick="setLanguage('en')"
+              ><img src="./english-flag.png" alt="english flag" width="20" />
+              English</a
+            >
+            <a onclick="setLanguage('tr')"
+              ><img
+                src="./turkish-flag.png"
+                alt="turkish flag"
+                width="20"
+              />Türkçe</a
+            >
+            <a onclick="setLanguage('ar')"
+              ><img
+                src="./arabic-flag.png"
+                alt="arabic flag"
+                width="20"
+              />العربية</a
+            >
+          </div>
+        </div>
+        <div class="logo"><a href="#">The Kiosk</a></div>
+      </div>
       <div class="toggle-button" onclick="toggleMenu()">
         <i class="fas fa-bars"></i>
       </div>
       <div class="menu">
-        <a href="#photos">Photos</a>
-        <a href="#story">Our Story</a>
-        <a href="#contact">Contact Us</a>
-        <a href="https://thekioskistcom.dijital.menu/">Our Menu</a>
+        <a href="#photos" data-i18n="photosLink">Photos</a>
+        <a href="#story" data-i18n="storyLink">Our Story</a>
+        <a href="#contact" data-i18n="contactLink">Contact Us</a>
+        <a href="https://thekioskistcom.dijital.menu/" data-i18n="menuLink"
+          >Our Menu</a
+        >
       </div>
     </nav>
 
     <header>
       <img src="./logo.png" alt="Shop Logo" />
-      <h1>Welcome to The Kiosk</h1>
-      <p>Where great food meets casual comfort</p>
-      <a href="https://thekioskistcom.dijital.menu/" class="button"
+      <h1 data-i18n="headerTitle">Welcome to The Kiosk</h1>
+      <p data-i18n="welcomeMessage">Where great food meets casual comfort</p>
+      <a
+        href="https://thekioskistcom.dijital.menu/"
+        class="button"
+        data-i18n="menuButton"
         >Visit Our Menu</a
       >
     </header>
@@ -349,14 +79,14 @@
 
     <!-- Text Section -->
     <section id="story" class="text-section container">
-      <h2>Our Story</h2>
-      <p>
+      <h2 data-i18n="storyTitle">Our Story</h2>
+      <p data-i18n="storyDetailsSectionOne">
         Nestled in the heart of Istanbul, we offer a cozy spot for you to enjoy
         our handcrafted sandwiches, freshly brewed coffee, and a variety of
         delicious treats. Whether you're grabbing a quick bite on the go or
         settling in with friends, we’re here to make every meal memorable.
       </p>
-      <p>
+      <p data-i18n="storyDetailsSectionTwo">
         Our menu is thoughtfully created with quality ingredients, and we pride
         ourselves on providing a relaxed atmosphere where everyone feels
         welcome. At The Kiosk, it's all about simple, tasty food served with a
@@ -366,11 +96,11 @@
 
     <!-- Contact Us Section -->
     <section id="contact" class="contact-section container">
-      <h2>Contact Us</h2>
+      <h2 data-i18n="contactTitle">Contact Us</h2>
       <div class="contact-info">
         <div class="contact-item">
           <i class="fab fa-instagram"></i>
-          <p>
+          <p data-i18n="followUsOn">
             Follow us on
             <a
               href="https://www.instagram.com/thekiosk_ist?igsh=M3phNXFpZXAyMDZp"
@@ -398,10 +128,6 @@
       </div>
     </section>
 
-    <script>
-      function toggleMenu() {
-        document.querySelector(".menu").classList.toggle("active");
-      }
-    </script>
+    <script src="./index.js"></script>
   </body>
 </html>
