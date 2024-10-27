@@ -14,6 +14,7 @@ window.onclick = function (event) {
 };
 const translations = {
   en: {
+    languageOptions: "Language Options:",
     headerTitle: "Welcome to The Kiosk",
     welcomeMessage: "Where great food meets casual comfort",
     menuButton: "Visit Our Menu",
@@ -32,6 +33,7 @@ const translations = {
       "Our menu is thoughtfully created with quality ingredients, and we pride ourselves on providing a relaxed atmosphere where everyone feels welcome. At The Kiosk, it's all about simple, tasty food served with a smile.",
   },
   tr: {
+    languageOptions: "Dil Seçenekleri:",
     headerTitle: "The Kiosk'a Hoşgeldiniz",
     welcomeMessage: "Lezzetli yemeklerin rahatlıkla buluştuğu yer.",
     menuButton: "Menümüze Göz Atın",
@@ -50,6 +52,7 @@ const translations = {
       "The Kiosk'ta, herkesin kendini rahat hissettiği sıcak bir ortamda basit ve lezzetli yemekler sunuyoruz.",
   },
   ar: {
+    languageOptions: "خيارات اللغة:",
     headerTitle: "مرحبًا بكم في The Kiosk",
     welcomeMessage: "حيث يجتمع الطعام الرائع مع الراحة غير الرسمية.",
     menuButton: "زر قائمتنا",
@@ -100,3 +103,46 @@ function updateContent(language) {
     element.innerHTML = translations[language][key];
   });
 }
+function toggleLanguageContainer() {
+  const container = document.getElementById("languageContainer");
+  container.classList.toggle("show");
+
+  // Smooth transition for showing/hiding container
+  if (container.classList.contains("show")) {
+    container.style.transform = "translateY(0)";
+    document.body.style.overflow = "hidden"; // Disable scrolling
+  } else {
+    container.style.transform = "translateY(100%)";
+    document.body.style.overflow = "auto"; // Re-enable scrolling
+  }
+}
+
+function closeLanguageContainer() {
+  const container = document.getElementById("languageContainer");
+  container.classList.remove("show");
+  container.style.transform = "translateY(100%)";
+  document.body.style.overflow = "auto"; // Re-enable scrolling
+}
+
+function selectLanguage(language) {
+  setLanguage(language);
+  document.getElementById("currentLang").innerText = language.toUpperCase();
+
+  // Update active language style
+  document.querySelectorAll(".language-options button").forEach((btn) => {
+    btn.classList.remove("active");
+  });
+  document.getElementById(`lang-${language}`).classList.add("active");
+
+  closeLanguageContainer();
+}
+
+window.onload = function () {
+  const savedLanguage = localStorage.getItem("selectedLanguage") || "en";
+  document.getElementById("currentLang").innerText =
+    savedLanguage.toUpperCase();
+  setLanguage(savedLanguage);
+
+  // Set initial active language style
+  document.getElementById(`lang-${savedLanguage}`).classList.add("active");
+};

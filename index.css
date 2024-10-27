@@ -365,3 +365,87 @@ p {
 .show {
   display: block;
 }
+/* Language selection button */
+.language-btn {
+  font-size: 14px;
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d9791d;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.language-btn:hover {
+  background-color: #000000;
+}
+
+/* Full-height language container with animations */
+.language-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+}
+
+.language-container.show {
+  transform: translateY(0);
+}
+
+.language-options {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.language-options button {
+  width: 93%;
+  font-size: 18px;
+  color: #333;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.language-options button:hover,
+.language-options button.active {
+  background-color: #d9791d;
+  color: white;
+}
+
+.close-btn {
+  position: absolute;
+  right: 0.8rem;
+  top: 1rem;
+  font-size: 24px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+.close-btn:hover {
+  color: #d9791d;
+}

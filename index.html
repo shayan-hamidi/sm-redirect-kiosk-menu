@@ -16,28 +16,84 @@
     <nav>
       <div style="display: flex; align-items: center; gap: 5">
         <div class="language-dropdown">
-          <button class="language-icon" onclick="toggleDropdown()">
-            <i class="fas fa-globe"></i>
+          <button class="language-btn" onclick="toggleLanguageContainer()">
+            <span id="currentLang">EN</span>
           </button>
-          <div class="dropdown-content" id="languageDropdown">
-            <a onclick="setLanguage('en')"
-              ><img src="./english-flag.png" alt="english flag" width="20" />
-              English</a
+        </div>
+        <div class="language-container" id="languageContainer">
+          <div class="language-options">
+            <button
+              onclick="selectLanguage('en')"
+              id="lang-en"
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 15px;
+              "
             >
-            <a onclick="setLanguage('tr')"
-              ><img
+              <img
+                src="./english-flag.png"
+                alt="english flag"
+                width="20"
+              />English
+            </button>
+            <button
+              onclick="selectLanguage('tr')"
+              id="lang-tr"
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 15px;
+              "
+            >
+              <img
                 src="./turkish-flag.png"
                 alt="turkish flag"
                 width="20"
-              />Türkçe</a
+              />Türkçe
+            </button>
+            <button
+              onclick="selectLanguage('ar')"
+              id="lang-ar"
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 15px;
+              "
             >
-            <a onclick="setLanguage('ar')"
-              ><img
+              <img
                 src="./arabic-flag.png"
                 alt="arabic flag"
                 width="20"
-              />العربية</a
+              />العربية
+            </button>
+          </div>
+          <div
+            style="
+              background: black;
+              position: absolute;
+              width: 100%;
+              height: 60px;
+              top: 0;
+            "
+          >
+            <button class="close-btn" onclick="closeLanguageContainer()">
+              X
+            </button>
+            <p
+              style="
+                font-size: 20px;
+                color: white;
+                position: absolute;
+                left: 0.8rem;
+              "
+              data-i18n="languageOptions"
             >
+              Language Options:
+            </p>
           </div>
         </div>
         <div class="logo"><a href="#">The Kiosk</a></div>
